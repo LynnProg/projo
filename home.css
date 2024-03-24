@@ -1,0 +1,135 @@
+/* home.css */
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url(y.jpg); /* Assuming 'y.jpg' is your background image */
+
+}
+/* Text styles */
+h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, sans-serif; /* Define font family */
+    font-weight: bold; /* Adjust font weight */
+    color: aqua;
+     
+}
+
+p {
+    font-family: Arial, sans-serif; /* Define font family */
+    font-size: 16px; /* Set font size */
+    line-height: 1.5; /* Adjust line height for readability */
+    color: beige;
+    font-style: italic; /* Set text color */
+}
+
+/* Link styles */
+a {
+    text-decoration: none; /* Remove default underline */
+    color: #007bff; /* Set link color */
+}
+
+a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+/* Heading styles */
+h1 {
+    font-size: 36px; 
+    margin-bottom: 20px; 
+    
+}
+
+h2 {
+    font-size: 24px; /* Set font size */
+    margin-bottom: 15px; /* Add space below heading */
+}
+
+/* Paragraph styles */
+p {
+    margin-bottom: 15px; /* Add space below paragraphs */
+}
+
+/* Text alignment */
+.text-left {
+    text-align: left; /* Align text to the left */
+}
+
+.text-center {
+    text-align: center; /* Align text to the center */
+}
+
+.text-right {
+    text-align: right; /* Align text to the right */
+}
+
+
+.text-primary {
+    color: beige;
+}
+
+.text-secondary {
+    color: beige;
+}
+
+
+.text-uppercase {
+    text-transform: uppercase; /* Convert text to uppercase */
+}
+
+.text-lowercase {
+    text-transform: lowercase; /* Convert text to lowercase */
+}
+
+.text-capitalize {
+    text-transform: capitalize; /* Capitalize the first letter of each word */
+}
+
+nav {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__links {
+    list-style: none;
+    display: flex;
+}
+
+.nav__links .link {
+    margin-right: 20px;
+}
+
+.nav__links .link a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav__logo img {
+    width: 100px;
+}
+
+/* Section styles */
+section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+/* Button styles */
+.btn {
+    background-color: sandybrown;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+   
+ background-color: aqua;
+}
