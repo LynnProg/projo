@@ -1,58 +1,37 @@
 <?php
+session_start();
+
 // Database connection
 $servername = "localhost";
-$username = "root"; // Default username for XAMPP
-$password = ""; // Default password for XAMPP
-$dbname = "motivation";
+$username = "root";
+$password = "";
+$database = "motivation"; // Change to your database name
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $database);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Function to hash password
-function hashPassword($password)
-{
-    return password_hash($password, PASSWORD_DEFAULT);
-}
+// Handle login form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST["email"];
+    $password = $_POST["password"];
 
-// User login
-if (isset($_POST['login'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    $sql = "SELECT * FROM users WHERE email='$email'";
+    // Validate user credentials
+    $sql = "SELECT * FROM users WHERE email='$email' AND password='$password'";
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1) {
-        $row = $result->fetch_assoc();
-        if (password_verify($password, $row['password'])) {
-            // Password is correct, redirect to dashboard or wherever you want
-            header("Location: dashboard.php");
-            exit();
-        } else {
-            echo "Invalid password";
-        }
+        // User found, redirect to home page or any other page
+        $_SESSION["loggedin"] = true;
+        header("Location: home.php");
+        exit();
     } else {
-        echo "User not found";
-    }
-}
-
-// User signup
-if (isset($_POST['signup'])) {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $password = hashPassword($_POST['password']);
-
-    $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password')";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        // Invalid credentials
+        echo "Invalid email or password.";
     }
 }
 
 $conn->close();
+?>

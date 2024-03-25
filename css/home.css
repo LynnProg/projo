@@ -23,13 +23,11 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Arial, sans-serif; /* Define font family */
   font-weight: bold; /* Adjust font weight */
   color: aqua;
 }
 
 p {
-  font-family: Arial, sans-serif; /* Define font family */
   font-size: 16px; /* Set font size */
   line-height: 1.5; /* Adjust line height for readability */
   color: beige;
@@ -59,7 +57,7 @@ h2 {
 
 /* Paragraph styles */
 p {
-  margin-bottom: 15px; /* Add space below paragraphs */
+  margin-bottom: 20px; /* Add space below paragraphs */
 }
 
 /* Text alignment */
