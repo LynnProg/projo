@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows == 1) {
         // User found, redirect to home page or any other page
         $_SESSION["loggedin"] = true;
-        header("Location: home.php");
+        header("Location: motivation.html");
         exit();
     } else {
         // Invalid credentials
