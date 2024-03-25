@@ -10,7 +10,7 @@ $fromEmail = "lynnchepngeno45@gmail.com";
 $fromName = "Lynn Chepngeno";
 
 // Recipient's email address
-$toEmail = "recipient@example.com";
+$toEmail = "babyanonymouse2@gmail.com";
 
 // Subject and body of the email
 $subject = "Test Email via Gmail SMTP";
