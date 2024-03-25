@@ -20,9 +20,18 @@ session_start();
         </div>
         <ul class="nav__links">
             <li class="link"><a href="#">Home</a></li>
-            <li class="link"><a href="motivation.html">Motivation</a></li>
+
+            <?php
+            if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+                echo '<li class="link"><a href="motivation.html">Motivation</a></li>';
+            } else {
+                echo '<li class="link"><a href="login.html">Motivation</a></li>';
+            }
+            ?>
+
             <li class="link"><a href="about.html">About</a></li>
             <li class="link"><a href="contact.html">Contact Us</a></li>
+            <!-- logout button -->
             <?php
             if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
                 echo '<li class="link"><a href="logout.php">Logout</a></li>';
