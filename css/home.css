@@ -10,7 +10,7 @@
 /* General styles */
 body {
   height: 100vh;
-  background-image: url(/images/y.jpg); /* Assuming 'y.jpg' is your background image */
+  background-image: url(../images/y.jpg); /* Assuming 'y.jpg' is your background image */
   background-repeat: no-repeat;
   background-size: cover;
   /* background shadow */
