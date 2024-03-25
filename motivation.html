@@ -1,53 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Motivation Platform</title>
-    <link rel="stylesheet" href="css/motivation.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
-    <!-- Font Awesome for icons -->
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <h1>
-          <i class="fas fa-bullhorn"></i> Motivation Platform
-          <i class="fas fa-bullhorn"></i>
-        </h1>
-      </header>
-      <main>
-        <div class="quote-container">
-          <p id="quote-text">Loading quote...</p>
-          <button id="send-button">
-            <i class="fas fa-envelope"></i> Send to Email
-          </button>
-        </div>
-        <div class="motivator-container">
-          <h2>Write a Motivational Quote</h2>
-          <textarea
-            id="motivational-text"
-            rows="4"
-            placeholder="Enter your motivational quote"
-          ></textarea>
-          <button id="add-button"><i class="fas fa-plus"></i> Add Quote</button>
-        </div>
-        <form id="email-form" style="display: none">
-          <h2>Send Quote to Email</h2>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Enter your email address"
-          />
-          <button type="submit"><i class="fas fa-paper-plane"></i> Send</button>
-        </form>
-      </main>
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Motivation Platform</title>
+  <link rel="stylesheet" href="css/motivation.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  />
+  <style>
+    #motivational-text {
+      resize: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>
+        <i class="fas fa-bullhorn"></i> Motivation Platform
+        <i class="fas fa-bullhorn"></i>
+      </h1>
+    </header>
+    <main>
+      <div class="quote-container">
+        <p id="quote-text">Loading quote...</p>
+        <button id="send-button">
+          <i class="fas fa-envelope"></i> Send to Email
+        </button>
+      </div>
+      <div class="motivator-container">
+        <h2>Write a Motivational Quote</h2>
+        <textarea
+          id="motivational-text"
+          placeholder="Enter your motivational quote"
+        ></textarea>
+        <button id="add-button"><i class="fas fa-plus"></i> Add Quote</button>
+      </div>
+      <form id="email-form" style="display: none">
+        <h2>Send Quote to Email</h2>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email address"
+        />
+        <button type="submit"><i class="fas fa-paper-plane"></i> Send</button>
+      </form>
+    </main>
+  </div>
 
-    <script src="script.js"></script>
-  </body>
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('add-button').addEventListener('click', function() {
+      var quoteText = document.getElementById('motivational-text').value;
+      document.getElementById('quote-text').textContent = quoteText;
+    });
+  </script>
+</body>
 </html>
