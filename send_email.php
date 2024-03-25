@@ -1,44 +1,50 @@
 <?php
-// Database connection
-$servername = "localhost"; // Change to your MySQL server name
-$username = "root"; // Change to your MySQL username
-$password = ""; // Change to your MySQL password
-$dbname = "motivation"; // Change to your database name
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+// Load PHPMailer autoload file
+require 'vendor/autoload.php';
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+// Sender's email and name
+$fromEmail = "lynnchepngeno45@gmail.com";
+$fromName = "Lynn Chepngeno";
+
+// Recipient's email address
+$toEmail = "recipient@example.com";
+
+// Subject and body of the email
+$subject = "Test Email via Gmail SMTP";
+$body = "This is a test email sent via Gmail's SMTP server.";
+
+// SMTP configuration
+$smtpUsername = "your.email@gmail.com";
+$smtpPassword = "tgvc ocqu yhcf dwwh"; // Use the app-specific password generated earlier
+$smtpHost = "smtp.gmail.com";
+$smtpPort = 587; // TLS port
+
+// Create PHPMailer object
+$mail = new PHPMailer(true);
+
+try {
+    // SMTP configuration
+    $mail->isSMTP();
+    $mail->Host = $smtpHost;
+    $mail->SMTPAuth = true;
+    $mail->Username = $smtpUsername;
+    $mail->Password = $smtpPassword;
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = $smtpPort;
+
+    // Email content
+    $mail->setFrom($fromEmail, $fromName);
+    $mail->addAddress($toEmail);
+    $mail->Subject = $subject;
+    $mail->Body = $body;
+
+    // Send email
+    $mail->send();
+    echo "Email sent successfully!";
+} catch (Exception $e) {
+    echo "Error: " . $mail->ErrorInfo;
 }
-
-// Get quote from POST request
-$quote = $_POST['quote'];
-
-// Retrieve registered emails from users table
-$sql = "SELECT email FROM users";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    // Loop through each row and send the quote to the email
-    while($row = $result->fetch_assoc()) {
-        $to = $row["email"];
-        $subject = "Motivational Quote";
-        $message = "Here is your daily motivational quote: \n\n" . $quote;
-        $headers = "From: your_email@example.com"; // Change to your email address
-
-        // Send email
-        if (mail($to, $subject, $message, $headers)) {
-            echo "Quote sent to: " . $to . "<br>";
-        } else {
-            echo "Failed to send quote to: " . $to . "<br>";
-        }
-    }
-} else {
-    echo "No registered users found.";
-}
-
-// Close connection
-$conn->close();
 ?>
