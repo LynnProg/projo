@@ -7,18 +7,18 @@ require 'vendor/autoload.php';
 
 // Sender's email and name
 $fromEmail = "lynnchepngeno45@gmail.com";
-$fromName = "Lynn Chepngeno";
+$fromName = "Lynn";
 
 // Recipient's email address
-$toEmail = "babyanonymouse2@gmail.com";
+$toEmail = "kida8152@gmail.com"; // Change this to the recipient's email address
 
 // Subject and body of the email
 $subject = "Test Email via Gmail SMTP";
 $body = "This is a test email sent via Gmail's SMTP server.";
 
 // SMTP configuration
-$smtpUsername = "your.email@gmail.com";
-$smtpPassword = "tgvc ocqu yhcf dwwh"; // Use the app-specific password generated earlier
+$smtpUsername = "lynnchepngeno45@gmail.com";
+$smtpPassword = "tgvc ocqu yhcf dwwh"; // Use the provided SMTP password
 $smtpHost = "smtp.gmail.com";
 $smtpPort = 587; // TLS port
 
