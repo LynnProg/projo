@@ -16,8 +16,8 @@ $fromEmail = "lynnchepngeno45@gmail.com";
 $fromName = "Lynn";
 
 // Subject and body of the email
-$subject = "Test Email via Gmail SMTP";
-$body = "This is a test email sent via Gmail's SMTP server.";
+$subject = "Daily Academic Quote";
+$body = "Believe you can and you're halfway there - Theodore Roosevelt.";
 
 // SMTP configuration
 $smtpUsername = "lynnchepngeno45@gmail.com";
