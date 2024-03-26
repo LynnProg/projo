@@ -25,9 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows == 1) {
         // User found, redirect to home page or any other page
         $_SESSION["loggedin"] = true;
-        echo "Thank You For Subscribing to Daily Academic Motivational Quotes. You Will be redirected to homepage after 3 seconds"; //success message
+        echo "Welcome Admin. "; //success message
         //redirect to motivation.html after 3 seconds
-        header("refresh:3;url=home.php");
+        header("refresh:3;url=admin.php");
         exit();
     } else {
         // Invalid credentials

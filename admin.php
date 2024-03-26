@@ -10,25 +10,20 @@ session_start();
     <title>Daily Academic Motivation</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/home.css" />
-    <style>
-        .hide {
-            display: none;
-        }
-    </style>
 </head>
 
 <body>
     <nav>
         <div class="nav_logo">
             <a href="#"><img src="images/motivation.png" alt="logo" /></a>
-            <span class="logo-name"><a href="#">AcademicIQ</a></span>
+            <span class="logo-name"><a href="#">AcademicIQ | Admin </a></span>
         </div>
         <ul class="nav__links">
             <li class="link"><a href="#">Home</a></li>
 
             <?php
             if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-                // echo '<li class="link"><a href="motivation.html">Motivation</a></li>';
+                echo '<li class="link"><a href="motivation.html">Motivation</a></li>';
             } else {
                 echo '<li class="link"><a href="login.html">Motivation</a></li>';
             }
@@ -55,9 +50,9 @@ session_start();
         <p>Start your journey with us today!</p>
         <?php
         if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-            echo '<a class="hide" href="motivation.html">WELCOME ALL TO AcademicIQ</a>';
+            echo '<a class="btn" href="motivation.html">WELCOME ALL TO AcademicIQ</a>';
         } else {
-            echo '<a class="btn" href="login.html">WELCOME ALL TO AcademicIQ</a>';
+            echo '<a class="btn" href="admin-login.html">WELCOME ALL TO AcademicIQ</a>';
         }
         ?>
     </section>

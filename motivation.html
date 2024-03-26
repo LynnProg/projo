@@ -1,70 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Motivation Platform</title>
     <link rel="stylesheet" href="css/motivation.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
     <style>
-        #motivational-text {
-            resize: none;
-        }
+      #motivational-text {
+        resize: none;
+      }
+      .admin-btn {
+        background-color: aquamarine;
+        padding: 10px;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .admin-btn:hover {
+        background-color: lightblue;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <a href="admin.php" class="admin-btn">Admin Home</a>
     <div class="container">
-        <header>
-            <h1>
-                <i class="fas fa-bullhorn"></i> Motivation Platform
-                <i class="fas fa-bullhorn"></i>
-            </h1>
-        </header>
-        <main>
-            <div class="quote-container">
-                <p id="quote-text">Loading quote...</p>
-                <button id="send-button">
-                    <i class="fas fa-envelope"></i> Send to Email
-                </button>
-            </div>
-            <div class="motivator-container">
-                <h2>Write a Motivational Quote</h2>
-                <textarea id="motivational-text" placeholder="Enter your motivational quote"></textarea>
-                <button id="add-button"><i class="fas fa-plus"></i> Add Quote</button>
-            </div>
-            <form id="email-form" style="display: none">
-                <h2>Send Quote to Email</h2>
-                <input type="email" id="email" name="email" placeholder="Enter your email address" />
-                <button type="submit"><i class="fas fa-paper-plane"></i> Send</button>
-            </form>
-        </main>
+      <header>
+        <h1>
+          <i class="fas fa-bullhorn"></i> Motivation Platform
+          <i class="fas fa-bullhorn"></i>
+        </h1>
+      </header>
+      <main>
+        <div class="quote-container">
+          <p id="quote-text">Loading quote...</p>
+          <button id="send-button">
+            <i class="fas fa-envelope"></i> Send to Email
+          </button>
+        </div>
+        <div class="motivator-container">
+          <h2>Write a Motivational Quote</h2>
+          <textarea
+            id="motivational-text"
+            placeholder="Enter your motivational quote"
+          ></textarea>
+          <button id="add-button"><i class="fas fa-plus"></i> Add Quote</button>
+        </div>
+        <form id="email-form" style="display: none">
+          <h2>Send Quote to Email</h2>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email address"
+          />
+          <button type="submit"><i class="fas fa-paper-plane"></i> Send</button>
+        </form>
+      </main>
     </div>
 
     <script>
-        document.getElementById('send-button').addEventListener('click', function() {
-            var quoteText = document.getElementById('quote-text').textContent;
+      document
+        .getElementById("send-button")
+        .addEventListener("click", function () {
+          var quoteText = document.getElementById("quote-text").textContent;
 
-            // Make AJAX request to send_email.php
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'send_email.php', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        alert('Quote sent to registered emails!');
-                    } else {
-                        alert('Failed to send quote to registered emails.');
-                    }
-                }
-            };
-            xhr.send('quote=' + encodeURIComponent(quoteText));
+          // Make AJAX request to send_email.php
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", "send_email.php", true);
+          xhr.setRequestHeader(
+            "Content-Type",
+            "application/x-www-form-urlencoded"
+          );
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+              if (xhr.status === 200) {
+                alert("Quote sent to registered emails!");
+              } else {
+                alert("Failed to send quote to registered emails.");
+              }
+            }
+          };
+          xhr.send("quote=" + encodeURIComponent(quoteText));
         });
 
-        document.getElementById('add-button').addEventListener('click', function() {
-            var quoteText = document.getElementById('motivational-text').value;
-            document.getElementById('quote-text').textContent = quoteText;
+      document
+        .getElementById("add-button")
+        .addEventListener("click", function () {
+          var quoteText = document.getElementById("motivational-text").value;
+          document.getElementById("quote-text").textContent = quoteText;
         });
     </script>
-    
-</body>
+  </body>
 </html>
