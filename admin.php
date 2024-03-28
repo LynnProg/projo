@@ -19,7 +19,7 @@ session_start();
             <span class="logo-name"><a href="#">AcademicIQ | Admin </a></span>
         </div>
         <ul class="nav__links">
-            <li class="link"><a href="#">Home</a></li>
+            <li class="link"><a href="home.php">Home</a></li>
 
             <?php
             if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
