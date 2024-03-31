@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         } else {
             // Redirect non-admin to home.php
-            header("Location: home.php");
+            header("Location: dash.html");
             exit();
         }
     } else {
