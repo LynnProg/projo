@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($conn->query($sql) === TRUE) {
         // Registration successful, redirect to login page
-        header("Location: motivation.html");
+        header("Location: home.php");
         exit();
     } else {
         // Error occurred

@@ -5,7 +5,7 @@ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "motivation"; // Change to your database name
+$database = "motivation";
 
 $conn = new mysqli($servername, $username, $password, $database);
 
@@ -23,12 +23,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1) {
-        // User found, redirect to home page or any other page
+        // User found
+        $row = $result->fetch_assoc();
         $_SESSION["loggedin"] = true;
-        echo "Thank You For Subscribing to Daily Academic Motivational Quotes. You Will be redirected to homepage after 3 seconds"; //success message
-        //redirect to motivation.html after 3 seconds
-        header("refresh:3;url=home.php");
-        exit();
+
+        // Check if the logged-in user is an admin
+        if ($row['is_admin'] == 1) {
+            // Redirect admin to admin.php
+            echo "Welcome Admin";
+            header("refresh:3;url=motivation.html");
+            exit();
+        } else {
+            // Redirect non-admin to home.php
+            header("Location: home.php");
+            exit();
+        }
     } else {
         // Invalid credentials
         echo "Invalid email or password.";
@@ -36,4 +45,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $conn->close();
-?>
