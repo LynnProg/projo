@@ -1,52 +1,63 @@
 <?php
+// Start session
 session_start();
 
 // Database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
+$servername = "localhost"; // Change this if your MySQL server is hosted elsewhere
+$username = "root"; // Change this if you have a different username for your MySQL server
+$password = ""; // Change this if you have set a password for your MySQL server
 $database = "motivation";
 
 $conn = new mysqli($servername, $username, $password, $database);
 
+// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Handle login form submission
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST["email"];
-    $password = $_POST["password"];
+// Retrieve form data
+$email = $_POST['email'];
+$password = $_POST['password'];
 
-    // Validate user credentials
-    $sql = "SELECT id, email, password, is_admin FROM users WHERE email=?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
+// Check if the provided credentials match those of the admin
+if ($email === 'lynn@admin.com' && $password === 'admin') {
+    // Admin login successful, set session variables
+    $_SESSION['loggedin'] = true;
+    $_SESSION['email'] = $email;
+    $_SESSION['admin'] = true;
+    header("Location: admin.php"); // Redirect to dashboard
+    exit();
+}
 
-    if ($result->num_rows == 1) {
-        $row = $result->fetch_assoc();
-        if (password_verify($password, $row['password'])) {
-            // Password is correct, set session variables
-            $_SESSION["loggedin"] = true;
-            $_SESSION["user_id"] = $row['id'];
+// If the provided credentials do not match admin credentials, check the users table
+// SQL query to fetch user data based on email
+$sql = "SELECT * FROM users WHERE email='$email'";
+$result = $conn->query($sql);
 
-            // Regenerate session ID to prevent session fixation
-            session_regenerate_id();
-
-            // Redirect to appropriate page
-            if ($row['is_admin'] == 1) {
-                header("Location: admin.php");
-            } else {
-                header("Location: dash.php");
-            }
-            exit();
+if ($result->num_rows > 0) {
+    // User found, verify password
+    $row = $result->fetch_assoc();
+    if (password_verify($password, $row['password'])) {
+        // Password is correct, set session variables
+        $_SESSION['loggedin'] = true;
+        $_SESSION['email'] = $email; // You may store other user data in session if needed
+        
+        // Check if the user is an admin
+        if ($row['is_admin'] == 1) {
+            $_SESSION['admin'] = true;
+        } else {
+            $_SESSION['admin'] = false;
         }
+        
+        header("Location: dash.php"); // Redirect to dashboard
+        exit();
+    } else {
+        // Password is incorrect
+        echo "Invalid email or password";
     }
-
-    // Invalid credentials
-    $error = "Invalid email or password.";
+} else {
+    // User not found
+    echo "User not found";
 }
 
 $conn->close();
