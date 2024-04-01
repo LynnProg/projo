@@ -21,6 +21,14 @@ CREATE TABLE IF NOT EXISTS users (
 INSERT INTO users (firstname, lastname, email, password, is_admin)
 VALUES ('Admin', 'User', '<admin@example.com>', 'admin', 1);
 
+CREATE TABLE motivation_table (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    subject VARCHAR(255) NOT NULL,
+    message TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
 ## CHANGES TO BE MADE
 
 1. the quotes in dash.php to show on cards below and save them on admin page after saving on database

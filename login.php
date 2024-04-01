@@ -31,11 +31,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($row['is_admin'] == 1) {
             // Redirect admin to admin.php
             echo "Welcome Admin";
-            header("refresh:3;url=motivation.html");
+            header("refresh:3;url=admin.php");
             exit();
         } else {
             // Redirect non-admin to home.php
-            header("Location: dash.html");
+            header("Location: dash.php");
             exit();
         }
     } else {
