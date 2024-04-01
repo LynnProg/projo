@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 INSERT INTO users (firstname, lastname, email, password, is_admin)
-VALUES ('Admin', 'User', '<admin@example.com>', 'admin', 1);
+VALUES ('Admin', 'User', 'admin@example.com', 'admin', 1);
 
 CREATE TABLE motivation_table (
     id INT AUTO_INCREMENT PRIMARY KEY,

@@ -19,29 +19,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
 
     // Validate user credentials
-    $sql = "SELECT * FROM users WHERE email='$email' AND password='$password'";
-    $result = $conn->query($sql);
+    $sql = "SELECT id, email, password, is_admin FROM users WHERE email=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result->num_rows == 1) {
-        // User found
         $row = $result->fetch_assoc();
-        $_SESSION["loggedin"] = true;
+        if (password_verify($password, $row['password'])) {
+            // Password is correct, set session variables
+            $_SESSION["loggedin"] = true;
+            $_SESSION["user_id"] = $row['id'];
 
-        // Check if the logged-in user is an admin
-        if ($row['is_admin'] == 1) {
-            // Redirect admin to admin.php
-            echo "Welcome Admin";
-            header("refresh:3;url=admin.php");
-            exit();
-        } else {
-            // Redirect non-admin to home.php
-            header("Location: dash.php");
+            // Regenerate session ID to prevent session fixation
+            session_regenerate_id();
+
+            // Redirect to appropriate page
+            if ($row['is_admin'] == 1) {
+                header("Location: admin.php");
+            } else {
+                header("Location: dash.php");
+            }
             exit();
         }
-    } else {
-        // Invalid credentials
-        echo "Invalid email or password.";
     }
+
+    // Invalid credentials
+    $error = "Invalid email or password.";
 }
 
 $conn->close();
+?>
