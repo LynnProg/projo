@@ -17,6 +17,8 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL,
     is_admin TINYINT(1) DEFAULT 0
 );
+INSERT INTO users (firstname, lastname, email, password, is_admin)
+VALUES ('Admin', 'Admin', 'lynn@admin.com' '$2y$10$Cj2nA4T30QriHd2dHyHJUeUDQsXHLtNLbJXjBlTsL1aNXO8lH20GS', 1);
 
 CREATE TABLE motivation_table (
     id INT AUTO_INCREMENT PRIMARY KEY,
