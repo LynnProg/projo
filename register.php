@@ -19,12 +19,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    // Insert user into database
-    $sql = "INSERT INTO users (firstname, lastname, email, password) VALUES ('$firstname', '$lastname', '$email', '$password')";
+    // Hash the password
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    if ($conn->query($sql) === TRUE) {
+    // Insert user into database using prepared statement
+    $sql = "INSERT INTO users (firstname, lastname, email, password) VALUES (?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssss", $firstname, $lastname, $email, $hashed_password);
+
+    if ($stmt->execute()) {
         // Registration successful, redirect to login page
-        header("Location: home.php");
+        header("Location: login.html");
         exit();
     } else {
         // Error occurred
@@ -34,3 +39,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 // Close the database connection
 $conn->close();
+?>
