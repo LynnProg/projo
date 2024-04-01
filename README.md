@@ -19,8 +19,9 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 INSERT INTO users (firstname, lastname, email, password, is_admin)
-VALUES ('Admin', 'User', 'admin@example.com', 'admin', 1);
+VALUES ('Admin', 'User', '<admin@example.com>', 'admin', 1);
 
 ## CHANGES TO BE MADE
+
 1. the quotes in dash.php to show on cards below and save them on admin page after saving on database
 2. modify admin page according to photo
