@@ -139,6 +139,7 @@ $conn->close();
     </div>
   </section>
   <!-- Script to show sucess message popup -->
+  <!-- Script to show success message popup -->
   <script>
     // Wait for the DOM to be fully loaded
     document.addEventListener("DOMContentLoaded", function() {
@@ -153,14 +154,14 @@ $conn->close();
         // Hide the success message popup after 3 seconds
         setTimeout(function() {
           document.getElementById("successPopup").style.display = "none";
-        }, 5000);
 
-        // Submit the form after showing the success message
-        document.getElementById("motivationForm").submit();
+          // After hiding the success message, submit the form
+          document.getElementById("motivationForm").submit();
+        }, 3000); // Adjust the delay as needed
       });
     });
   </script>
-  </script>
+
 </body>
 
 </html>
