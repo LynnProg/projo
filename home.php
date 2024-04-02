@@ -161,22 +161,19 @@ session_start();
         <div class="client__card">
           <img src="assets/client-1.jpg" alt="client" />
           <p>
-            The booking process was seamless, and the confirmation was
-            instant. I highly recommend WDM&Co for hassle-free hotel bookings.
+            Using AspirePath was a breeze, and getting motivated every day was instant. I highly recommend AspirePath for a hassle-free journey towards self-improvement.
           </p>
         </div>
         <div class="client__card">
           <img src="assets/client-2.jpg" alt="client" />
           <p>
-            The website provided detailed information about hotel, including
-            amenities, photos, which helped me make an informed decision.
+            Navigating through AspirePath was smooth, and the daily motivational content was instantly uplifting. I highly recommend AspirePath for a seamless experience on your path to personal growth.
           </p>
         </div>
         <div class="client__card">
           <img src="assets/client-3.jpg" alt="client" />
           <p>
-            I was able to book a room within minutes, and the hotel exceeded
-            my expectations. I appreciate WDM&Co's efficiency and reliability.
+            AspirePath provided me with an effortless way to stay motivated daily, and the inspiration was immediate. I highly recommend AspirePath for a user-friendly journey towards achieving your goals.
           </p>
         </div>
       </div>
@@ -189,14 +186,10 @@ session_start();
       <div class="footer__col">
         <h3>AspirePath</h3>
         <p>
-          WDM&Co is a premier hotel booking website that offers a seamless and
-          convenient way to find and book accommodations worldwide.
+          AspirePath is your daily source of motivation, empowering you with positivity and actionable insights to reach your goals. Join us on the path to success.
         </p>
         <p>
-          With a user-friendly interface and a vast selection of hotels,
-          WDM&Co aims to provide a stress-free experience for travelers
-          seeking the perfect stay.
-        </p>
+          With a user-friendly interface, AspirePath makes accessing daily motivation effortless. Join us as we inspire and guide you on your journey to success. </p>
       </div>
       <div class="footer__col">
         <h4>Quick Links</h4>
@@ -206,7 +199,7 @@ session_start();
       </div>
     </div>
     <div class="footer__bar">
-      Copyright © 2023 Web Design Mastery. All rights reserved.
+      Copyright © 2024 AspirePath. All rights reserved.
     </div>
   </footer>
 </body>

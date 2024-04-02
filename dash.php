@@ -1,6 +1,13 @@
 <?php
 session_start();
 
+// Check if user is not logged in, redirect to login page
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+  header("Location: login.html");
+  exit;
+}
+
+
 // Establish connection to the database
 $servername = "localhost";
 $username = "root"; // Assuming you are using default XAMPP username
@@ -113,22 +120,19 @@ $conn->close();
         <div class="client__card">
           <img src="assets/client-1.jpg" alt="client" />
           <p>
-            The booking process was seamless, and the confirmation was
-            instant. I highly recommend WDM&Co for hassle-free hotel bookings.
+            Using AspirePath was a breeze, and getting motivated every day was instant. I highly recommend AspirePath for a hassle-free journey towards self-improvement.
           </p>
         </div>
         <div class="client__card">
           <img src="assets/client-2.jpg" alt="client" />
           <p>
-            The website provided detailed information about hotel, including
-            amenities, photos, which helped me make an informed decision.
+            Navigating through AspirePath was smooth, and the daily motivational content was instantly uplifting. I highly recommend AspirePath for a seamless experience on your path to personal growth.
           </p>
         </div>
         <div class="client__card">
           <img src="assets/client-3.jpg" alt="client" />
           <p>
-            I was able to book a room within minutes, and the hotel exceeded
-            my expectations. I appreciate WDM&Co's efficiency and reliability.
+            AspirePath provided me with an effortless way to stay motivated daily, and the inspiration was immediate. I highly recommend AspirePath for a user-friendly journey towards achieving your goals.
           </p>
         </div>
       </div>

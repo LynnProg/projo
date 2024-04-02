@@ -1,3 +1,32 @@
+<?php
+session_start();
+
+// Check if user is not logged in or not admin, redirect to login page
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true || !isset($_SESSION['admin']) || $_SESSION['admin'] !== true) {
+    // Authenticate user with admin credentials
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Check if the provided credentials match admin credentials
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        if ($email === 'lynn@admin.com' && $password === 'admin') {
+            // Admin login successful, set session variables
+            $_SESSION['loggedin'] = true;
+            $_SESSION['email'] = $email;
+            $_SESSION['admin'] = true;
+        } else {
+            // Invalid credentials, redirect to login page
+            header("Location: login.html");
+            exit;
+        }
+    } else {
+        // Redirect to login page
+        header("Location: login.html");
+        exit;
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
