@@ -1,52 +1,53 @@
-*{ 
-   margin: 0;
-   padding: 0% 
-   ; 
+* {
+  margin: 0;
+  padding: 0%;
 }
-.navbar{
-    width: 1200px;
-    height: 75px;
-    margin: auto;
+.navbar {
+  width: 1200px;
+  height: 75px;
+  margin: auto;
 }
-.main{ 
-    width: 100; 
-    background: linear-gradient(to top, rgba(0,0,0,0.5)50%, rgba(0,0,0,0.5)50%), url(j.jpg); 
-    background-position: center;
-    background-size: cover;
-    height: 109vh; 
+.main {
+  width: 100;
+  background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0.5) 50%
+    ),
+    url(j.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 109vh;
+}
 
+.menu {
+  width: 400px;
+  float: left;
+  height: 70px;
 }
-
-.menu{
-    width: 400px;
-    float: left;
-    height: 70px;
-
+ul {
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-ul{
-    float: left;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+ul li {
+  list-style: none;
+  margin-left: 62px;
+  margin-top: 27px;
+  font-size: 14px;
 }
-ul li{
-    list-style: none;
-    margin-left: 62px;
-    margin-top: 27px;
-    font-size: 14px;
+ul li a {
+  text-decoration: none;
+  color: #fff;
 }
-ul li a{
-    text-decoration: none;
-    color: #fff;
+ul li {
+  text-decoration: none;
+  color: #fff;
+  font-family: Arial;
+  font-weight: bold;
+  transition: 0.4s ease-in-out;
 }
-ul li{
-    text-decoration: none;
-    color:#fff;
-    font-family: Arial;
-    font-weight: bold;
-    transition: 0.4s ease-in-out;
-
-}
-ul li :hover{
-    color: #00ff4c;
+ul li :hover {
+  color: #00ff4c;
 }
