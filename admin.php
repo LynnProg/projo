@@ -64,6 +64,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true || !isset($_
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             background-color: #f9f9f9;
+            margin-top: 312px;
         }
 
         .dashboard h2 {

@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $sql = "INSERT INTO motivation_table (subject, message) VALUES ('$subject', '$message')";
 
   if ($conn->query($sql) === TRUE) {
-    $success_message = "Motivation added successfully!";
+    $success_message = "Motivation added successfully! Your quote will be sent to the admin";
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
